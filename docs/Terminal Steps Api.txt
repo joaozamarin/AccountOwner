@@ -1,0 +1,14 @@
+/* Criar uma solução Net */
+    dotnet new sln --name AccountOwnerServer
+
+/* Criar o projeto API */
+    dotnet new webapi -n AccountOwnerServer -f net6.0
+
+/* Adicionar o projeto API na solução */
+    dotnet sln add AccountOwnerServer\AccountOwnerServer.csproj
+
+/* Commit do Projeto */
+    git add .
+    git commit -m ""
+    git status
+    git push
