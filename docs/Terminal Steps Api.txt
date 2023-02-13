@@ -12,3 +12,6 @@
     git commit -m ""
     git status
     git push
+
+/* Criar um projeto de biblioteca de classes, na pasta backend */
+    dotnet new classlib --name Contracts -f net6.0
