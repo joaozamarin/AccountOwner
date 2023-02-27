@@ -1,17 +1,48 @@
-/* Criar uma solução Net */
-    dotnet new sln --name AccountOwnerServer
+/* Entrar na Pasta do BackEnd */
+cd backend
 
-/* Criar o projeto API */
-    dotnet new webapi -n AccountOwnerServer -f net6.0
+/* Criar uma solução Net*/
+dotnet new sln --name AccountOwnerServer
 
-/* Adicionar o projeto API na solução */
-    dotnet sln add AccountOwnerServer\AccountOwnerServer.csproj
+/* Criar o projeto API*/
+dotnet new webapi --name AccountOwnerServer -f net6.0 -lang "C#"
+/* Adicionar o projeto API na Solução */
+dotnet sln add AccountOwnerServer\AccountOwnerServer.csproj
 
 /* Commit do Projeto */
-    git add .
-    git commit -m ""
-    git status
-    git push
+git add .
+git commit -m "Criação da estrutura de pasta, da solução e do projeto WebApi do backend"
+git push
 
-/* Criar um projeto de biblioteca de classes, na pasta backend */
-    dotnet new classlib --name Contracts -f net6.0
+/* Clicar no botão azul da janelinha que será exibida */
+/* Se necessário no navegador clicar no botão para autorizar o acesso ao repositório*/
+
+
+
+/* Para testar a API de dentro da pasta backend*/
+dotnet watch run --project AccountOwnerServer\AccountOwnerServer.csproj
+
+/* Para testar a API de dentro da pasta do projeto */
+dotnet watch run
+
+
+/* Criar um projeto de biblioteca de classe  */
+/* Tem que estar na pasta backend */
+dotnet new classlib --name Contracts -f net6.0 
+dotnet sln add Contracts\Contracts.csproj
+
+/* Tem que estar na pasta backend */
+dotnet new classlib --name LoggerService -f net6.0
+dotnet sln add LoggerService\LoggerService.csproj
+
+/* Adicionando referência do LoggerService na API */
+dotnet add AccountOwnerServer\AccountOwnerServer.csproj reference LoggerService\LoggerService.csproj
+
+/* Adicionando referência do Contracts no LoggerService */
+dotnet add LoggerService\LoggerService.csproj reference Contracts\Contracts.csproj
+
+/* Acessar a pasta LoggerService */
+cd LoggerService
+
+/* Instalando o pacote NLog*/
+dotnet add package NLog.Extensions.Logging --version 5.2.1
