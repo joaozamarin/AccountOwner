@@ -13,10 +13,10 @@ namespace Entities.Models
         public DateTime DateCreated { get; set; }
 
         [Required]
-        public string? AccountType { get; set; }
+        public string AccountType { get; set; }
 
         [ForeignKey(nameof(Owner))]
         public Guid OwnerId { get; set; }
-        public Owner? Owner { get; set; }
+        public Owner Owner { get; set; }
     }
 }
