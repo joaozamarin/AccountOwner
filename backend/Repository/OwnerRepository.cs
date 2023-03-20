@@ -17,6 +17,11 @@ namespace Repository
             Create(owner);
         }
 
+        public void DeleteOwner(Owner owner)
+        {
+            Delete(owner);
+        }
+
         public IEnumerable<Owner> GetAllOwners()
         {
             return FindAll()
@@ -35,6 +40,11 @@ namespace Repository
             return FindByCondition(owner => owner.OwnerId.Equals(ownerId))
                 .Include(ac => ac.Accounts)
                 .FirstOrDefault();
+        }
+
+        public void UpdateOwner(Owner owner)
+        {
+            Update(owner);
         }
     }
 }
