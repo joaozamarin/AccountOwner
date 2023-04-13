@@ -108,7 +108,7 @@ namespace AccountOwnerServer.Controllers
                 _repository.Owner.CreateOwner(ownerEntity);
                 _repository.Save();
                 var createdOwner = _mapper.Map<OwnerDto>(ownerEntity);
-                return CreatedAtRoute("OwnerById", new { id = createdOwner.Id }, createdOwner);
+                return CreatedAtRoute("OwnerById", new { id = createdOwner.OwnerId }, createdOwner);
             }
             catch (Exception ex)
             {
