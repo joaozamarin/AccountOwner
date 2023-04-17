@@ -31,13 +31,13 @@ namespace Repository
 
         public Owner GetOwnerById(Guid ownerId)
         {
-            return FindByCondition(owner => owner.OwnerId.Equals(ownerId))
+            return FindByCondition(owner => owner.Id.Equals(ownerId))
                 .FirstOrDefault();
         }
 
         public Owner GetOwnerWithDetails(Guid ownerId)
         {
-            return FindByCondition(owner => owner.OwnerId.Equals(ownerId))
+            return FindByCondition(owner => owner.Id.Equals(ownerId))
                 .Include(ac => ac.Accounts)
                 .FirstOrDefault();
         }
