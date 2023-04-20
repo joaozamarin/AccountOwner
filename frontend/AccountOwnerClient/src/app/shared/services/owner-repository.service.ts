@@ -1,3 +1,4 @@
+import { OwnerForCreation } from './../../_interfaces/ownerForCreation.model';
 import { EnvironmentUrlService } from './environment-url.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -17,7 +18,7 @@ export class OwnerRepositoryService {
     return this.http.get<Owner>(this.createCompleteRoute(route, this.envUrl.urlAddress));
   }
 
-  public createOwner = (route: string, owner: Owner) => {
+  public createOwner = (route: string, owner: OwnerForCreation) => {
     return this.http.post<Owner>(this.createCompleteRoute(route, this.envUrl.urlAddress),
       owner, this.generateHeaders());
   }
